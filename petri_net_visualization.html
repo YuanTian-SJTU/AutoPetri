@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Petri网可视化</title>
+  <style>
+    body { font-family: '微软雅黑', Arial, sans-serif; background: #f8f8f8; margin: 0; }
+    #container { width: 100vw; height: 100vh; overflow: hidden; position: relative; }
+    #svg { background: #fff; border: 1px solid #ccc; }
+    #fileInput { margin: 20px; }
+    .node-label { font-size: 14px; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+    .place { fill: #e3f2fd; stroke: #1976d2; stroke-width: 2; }
+    .transition { fill: #fff3e0; stroke: #f57c00; stroke-width: 2; }
+    .arc { stroke: #888; stroke-width: 1.5; marker-end: url(#arrow); }
+  </style>
+</head>
+<body>
+  <input type="file" id="fileInput" accept=".pnml,.xml">
+  <div id="container">
+    <svg id="svg" width="1600" height="900"></svg>
+  </div>
+  <script>
+    const svg = document.getElementById('svg');
+    const fileInput = document.getElementById('fileInput');
+    let nodes = {}, transitions = {}, arcs = [];
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+
+    let tooltip = document.createElement('div');
+    tooltip.style.position = 'absolute';
+    tooltip.style.background = 'rgba(50,50,50,0.95)';
+    tooltip.style.color = '#fff';
+    tooltip.style.padding = '8px 14px';
+    tooltip.style.borderRadius = '6px';
+    tooltip.style.fontSize = '14px';
+    tooltip.style.pointerEvents = 'none';
+    tooltip.style.display = 'none';
+    tooltip.style.zIndex = 10;
+    document.body.appendChild(tooltip);
+
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        parsePNML(evt.target.result);
+        drawNet();
+      };
+      reader.readAsText(file);
+    });
+
+    function parsePNML(xmlStr) {
+      nodes = {}; transitions = {}; arcs = [];
+      minX = Infinity; minY = Infinity; maxX = -Infinity; maxY = -Infinity;
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlStr, 'text/xml');
+      // 解析 place
+      xml.querySelectorAll('place').forEach(p => {
+        const id = p.getAttribute('id');
+        const name = p.querySelector('name text')?.textContent || id;
+        const pos = p.querySelector('graphics position');
+        const x = pos ? parseFloat(pos.getAttribute('x')) : 0;
+        const y = pos ? parseFloat(pos.getAttribute('y')) : 0;
+        // 解析属性
+        let attrs = {};
+        // 存储量
+        const marking = p.querySelector('initialMarking text');
+        if (marking) attrs['存储量'] = marking.textContent;
+        // 经纬度
+        const attrLoc = p.querySelector('attribute[name="location"]');
+        if (attrLoc) {
+          const lon = attrLoc.querySelector('longitude')?.textContent;
+          const lat = attrLoc.querySelector('latitude')?.textContent;
+          if (lon) attrs['经度'] = lon;
+          if (lat) attrs['纬度'] = lat;
+        }
+        // 其他自定义属性
+        p.querySelectorAll('attribute').forEach(attr => {
+          const n = attr.getAttribute('name');
+          if (n && n !== 'location') attrs[n] = attr.textContent;
+        });
+        nodes[id] = { id, name, x, y, attrs };
+        minX = Math.min(minX, x); minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x); maxY = Math.max(maxY, y);
+      });
+      // 解析 transition
+      xml.querySelectorAll('transition').forEach(t => {
+        const id = t.getAttribute('id');
+        const name = t.querySelector('name text')?.textContent || id;
+        const pos = t.querySelector('graphics position');
+        const x = pos ? parseFloat(pos.getAttribute('x')) : 0;
+        const y = pos ? parseFloat(pos.getAttribute('y')) : 0;
+        // 可扩展：transition属性
+        let attrs = {};
+        t.querySelectorAll('attribute').forEach(attr => {
+          const n = attr.getAttribute('name');
+          if (n) attrs[n] = attr.textContent;
+        });
+        transitions[id] = { id, name, x, y, attrs };
+        minX = Math.min(minX, x); minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x); maxY = Math.max(maxY, y);
+      });
+      // 解析 arc
+      xml.querySelectorAll('arc').forEach(a => {
+        const id = a.getAttribute('id');
+        const source = a.getAttribute('source');
+        const target = a.getAttribute('target');
+        let inscription = '';
+        const ins = a.querySelector('inscription text');
+        if (ins) inscription = ins.textContent;
+        arcs.push({ id, source, target, inscription });
+      });
+    }
+
+    function drawNet() {
+      svg.innerHTML = '';
+      // 箭头
+      svg.innerHTML += `<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L10,5 L0,10 Z" fill="#888"/></marker></defs>`;
+      // 缩放自适应
+      const pad = 80;
+      const w = Math.max(800, maxX-minX+2*pad), h = Math.max(600, maxY-minY+2*pad);
+      svg.setAttribute('width', w); svg.setAttribute('height', h);
+      svg.setAttribute('viewBox', `${minX-pad} ${minY-pad} ${w} ${h}`);
+      // 画弧
+      arcs.forEach(a => {
+        const s = nodes[a.source] || transitions[a.source];
+        const t = nodes[a.target] || transitions[a.target];
+        if (!s || !t) return;
+        svg.innerHTML += `<line class="arc" x1="${s.x}" y1="${s.y}" x2="${t.x}" y2="${t.y}" />`;
+      });
+      // 画节点
+      Object.values(nodes).forEach(n => {
+        svg.innerHTML += `<circle class="place" cx="${n.x}" cy="${n.y}" r="28" data-id="${n.id}" />`;
+        svg.innerHTML += `<text class="node-label" x="${n.x}" y="${n.y+40}">${n.name}</text>`;
+      });
+      // 合并同坐标的transition
+      let tGroups = {};
+      Object.values(transitions).forEach(t => {
+        const key = `${t.x},${t.y}`;
+        if (!tGroups[key]) tGroups[key] = [];
+        tGroups[key].push(t);
+      });
+      // 判断最右侧x
+      let maxTx = Math.max(...Object.values(transitions).map(t=>t.x));
+      Object.entries(tGroups).forEach(([key, tArr]) => {
+        const t = tArr[0];
+        // 如果是最右侧任务节点，只画一个框，标注"任务"
+        if (t.x === maxTx) {
+          svg.innerHTML += `<rect class="transition" x="${t.x-20}" y="${t.y-28}" width="40" height="56" rx="6" data-id="${t.id}" data-taskgroup="1" />`;
+          svg.innerHTML += `<text class="node-label" x="${t.x}" y="${t.y+12}">任务</text>`;
+        } else {
+          // 多个任务分行显示
+          svg.innerHTML += `<rect class="transition" x="${t.x-20}" y="${t.y-28}" width="40" height="56" rx="6" data-id="${t.id}" />`;
+          let labelHtml = '';
+          tArr.forEach((tt, i) => {
+            labelHtml += `<tspan x="${t.x}" dy="${i===0?40:18}">${tt.name}</tspan>`;
+          });
+          svg.innerHTML += `<text class="node-label" x="${t.x}" y="${t.y+12}">${labelHtml}</text>`;
+        }
+      });
+      // 悬浮事件
+      setTimeout(() => {
+        svg.querySelectorAll('circle.place').forEach(el => {
+          el.addEventListener('mousemove', e => showTooltip(e, nodes[el.getAttribute('data-id')]));
+          el.addEventListener('mouseleave', hideTooltip);
+        });
+        // transition事件
+        Object.entries(tGroups).forEach(([key, tArr]) => {
+          const t = tArr[0];
+          // 只给每个合并框的第一个transition加事件
+          svg.querySelectorAll(`rect.transition[data-id='${t.id}']`).forEach(el => {
+            el.addEventListener('mousemove', e => showTooltip(e, t, true, tArr));
+            el.addEventListener('mouseleave', hideTooltip);
+          });
+        });
+      }, 10);
+    }
+
+    function showTooltip(e, node, isTransition=false, tArr=null) {
+      // 如果是最右侧任务节点，显示所有任务名，不显示单个节点名
+      if (isTransition && tArr && node.x === Math.max(...Object.values(transitions).map(t=>t.x))) {
+        let html = `<b>任务列表：</b><br/>`;
+        tArr.forEach(tt => {
+          html += `${tt.name}<br/>`;
+        });
+        tooltip.innerHTML = html;
+        tooltip.style.left = (e.clientX + 18) + 'px';
+        tooltip.style.top = (e.clientY + 18) + 'px';
+        tooltip.style.display = 'block';
+        return;
+      }
+      // 合并运输transition节点，显示所有运输及其运输时间
+      if (isTransition && tArr && tArr.length > 1) {
+        let html = '';
+        tArr.forEach(tt => {
+          html += `<b>${tt.name}</b><br/>`;
+          let related = arcs.filter(a => a.source === tt.id && a.inscription);
+          if (related.length > 0) {
+            related.forEach(a => {
+              html += `运输时间: ${a.inscription}<br/>`;
+            });
+          }
+        });
+        tooltip.innerHTML = html;
+        tooltip.style.left = (e.clientX + 18) + 'px';
+        tooltip.style.top = (e.clientY + 18) + 'px';
+        tooltip.style.display = 'block';
+        return;
+      }
+      let html = `<b>${node.name}</b><br/>`;
+      for (const k in node.attrs) {
+        html += `${k}: ${node.attrs[k]}<br/>`;
+      }
+      // 普通transition，查找以该transition为source的arc的inscription
+      if (isTransition) {
+        let related = arcs.filter(a => a.source === node.id && a.inscription);
+        if (related.length > 0) {
+          related.forEach(a => {
+            html += `运输时间: ${a.inscription}<br/>`;
+          });
+        }
+      }
+      tooltip.innerHTML = html;
+      tooltip.style.left = (e.clientX + 18) + 'px';
+      tooltip.style.top = (e.clientY + 18) + 'px';
+      tooltip.style.display = 'block';
+    }
+    function hideTooltip() {
+      tooltip.style.display = 'none';
+    }
+
+    // 拖拽与缩放
+    let isPanning = false, startX, startY, viewBox0;
+    svg.addEventListener('mousedown', e => {
+      isPanning = true;
+      startX = e.clientX; startY = e.clientY;
+      viewBox0 = svg.viewBox.baseVal;
+    });
+    svg.addEventListener('mousemove', e => {
+      if (!isPanning) return;
+      const dx = e.clientX - startX, dy = e.clientY - startY;
+      svg.setAttribute('viewBox', `${viewBox0.x - dx} ${viewBox0.y - dy} ${viewBox0.width} ${viewBox0.height}`);
+    });
+    svg.addEventListener('mouseup', () => { isPanning = false; });
+    svg.addEventListener('mouseleave', () => { isPanning = false; });
+    svg.addEventListener('wheel', e => {
+      e.preventDefault();
+      let vb = svg.viewBox.baseVal;
+      let scale = e.deltaY < 0 ? 0.9 : 1.1;
+      let mx = e.offsetX / svg.width.baseVal.value * vb.width + vb.x;
+      let my = e.offsetY / svg.height.baseVal.value * vb.height + vb.y;
+      let newW = vb.width * scale, newH = vb.height * scale;
+      let newX = mx - (mx-vb.x)*scale;
+      let newY = my - (my-vb.y)*scale;
+      svg.setAttribute('viewBox', `${newX} ${newY} ${newW} ${newH}`);
+    }, { passive: false });
+  </script>
+</body>
+</html> 

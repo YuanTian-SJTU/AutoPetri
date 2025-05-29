@@ -1,0 +1,835 @@
+<?xml version="1.0" ?>
+<pnml>
+  <net id="net1" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <place id="___T1">
+      <name>
+        <text>仓库-T1</text>
+      </name>
+      <initialMarking>
+        <text>180</text>
+      </initialMarking>
+      <graphics>
+        <position x="100" y="100"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>112.9388</longitude>
+        <latitude>28.2282</latitude>
+      </attribute>
+    </place>
+    <place id="___T2">
+      <name>
+        <text>仓库-T2</text>
+      </name>
+      <initialMarking>
+        <text>150</text>
+      </initialMarking>
+      <graphics>
+        <position x="100" y="220"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>108.9402</longitude>
+        <latitude>34.3416</latitude>
+      </attribute>
+    </place>
+    <place id="___T3">
+      <name>
+        <text>仓库-T3</text>
+      </name>
+      <initialMarking>
+        <text>130</text>
+      </initialMarking>
+      <graphics>
+        <position x="100" y="340"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>106.5516</longitude>
+        <latitude>29.563</latitude>
+      </attribute>
+    </place>
+    <place id="___S1">
+      <name>
+        <text>仓库-S1</text>
+      </name>
+      <initialMarking>
+        <text>300</text>
+      </initialMarking>
+      <graphics>
+        <position x="400" y="100"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>104.0665</longitude>
+        <latitude>30.5723</latitude>
+      </attribute>
+    </place>
+    <place id="___S2">
+      <name>
+        <text>仓库-S2</text>
+      </name>
+      <initialMarking>
+        <text>260</text>
+      </initialMarking>
+      <graphics>
+        <position x="400" y="220"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>111.717</longitude>
+        <latitude>27.8178</latitude>
+      </attribute>
+    </place>
+    <place id="___P1">
+      <name>
+        <text>仓库-P1</text>
+      </name>
+      <initialMarking>
+        <text>600</text>
+      </initialMarking>
+      <graphics>
+        <position x="700" y="100"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>116.4074</longitude>
+        <latitude>39.9042</latitude>
+      </attribute>
+    </place>
+    <place id="___P2">
+      <name>
+        <text>仓库-P2</text>
+      </name>
+      <initialMarking>
+        <text>550</text>
+      </initialMarking>
+      <graphics>
+        <position x="700" y="220"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>113.2644</longitude>
+        <latitude>23.1291</latitude>
+      </attribute>
+    </place>
+    <place id="___P3">
+      <name>
+        <text>仓库-P3</text>
+      </name>
+      <initialMarking>
+        <text>580</text>
+      </initialMarking>
+      <graphics>
+        <position x="700" y="340"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>118.7969</longitude>
+        <latitude>32.0603</latitude>
+      </attribute>
+    </place>
+    <place id="___P4">
+      <name>
+        <text>仓库-P4</text>
+      </name>
+      <initialMarking>
+        <text>490</text>
+      </initialMarking>
+      <graphics>
+        <position x="700" y="460"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>121.4737</longitude>
+        <latitude>31.2304</latitude>
+      </attribute>
+    </place>
+    <place id="___U1">
+      <name>
+        <text>仓库-U1</text>
+      </name>
+      <initialMarking>
+        <text>50</text>
+      </initialMarking>
+      <graphics>
+        <position x="1000" y="100"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>114.3055</longitude>
+        <latitude>30.5928</latitude>
+      </attribute>
+    </place>
+    <place id="___U2">
+      <name>
+        <text>仓库-U2</text>
+      </name>
+      <initialMarking>
+        <text>70</text>
+      </initialMarking>
+      <graphics>
+        <position x="1000" y="220"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>117.0009</longitude>
+        <latitude>36.6758</latitude>
+      </attribute>
+    </place>
+    <place id="___U3">
+      <name>
+        <text>仓库-U3</text>
+      </name>
+      <initialMarking>
+        <text>60</text>
+      </initialMarking>
+      <graphics>
+        <position x="1000" y="340"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>115.8582</longitude>
+        <latitude>32.9126</latitude>
+      </attribute>
+    </place>
+    <place id="___U4">
+      <name>
+        <text>仓库-U4</text>
+      </name>
+      <initialMarking>
+        <text>40</text>
+      </initialMarking>
+      <graphics>
+        <position x="1000" y="460"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>119.2965</longitude>
+        <latitude>26.0745</latitude>
+      </attribute>
+    </place>
+    <place id="___U5">
+      <name>
+        <text>仓库-U5</text>
+      </name>
+      <initialMarking>
+        <text>65</text>
+      </initialMarking>
+      <graphics>
+        <position x="1000" y="580"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>120.1614</longitude>
+        <latitude>30.2936</latitude>
+      </attribute>
+    </place>
+    <place id="___U6">
+      <name>
+        <text>仓库-U6</text>
+      </name>
+      <initialMarking>
+        <text>55</text>
+      </initialMarking>
+      <graphics>
+        <position x="1000" y="700"/>
+      </graphics>
+      <attribute name="location">
+        <longitude>109.5038</longitude>
+        <latitude>18.2528</latitude>
+      </attribute>
+    </place>
+    <transition id="___001">
+      <name>
+        <text>任务-001</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___002">
+      <name>
+        <text>任务-002</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___003">
+      <name>
+        <text>任务-003</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___004">
+      <name>
+        <text>任务-004</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___005">
+      <name>
+        <text>任务-005</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___006">
+      <name>
+        <text>任务-006</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___007">
+      <name>
+        <text>任务-007</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___008">
+      <name>
+        <text>任务-008</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___009">
+      <name>
+        <text>任务-009</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___010">
+      <name>
+        <text>任务-010</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___011">
+      <name>
+        <text>任务-011</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___012">
+      <name>
+        <text>任务-012</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___013">
+      <name>
+        <text>任务-013</text>
+      </name>
+      <graphics>
+        <position x="1300" y="100"/>
+      </graphics>
+    </transition>
+    <transition id="___014">
+      <name>
+        <text>任务-014</text>
+      </name>
+      <graphics>
+        <position x="1300" y="220"/>
+      </graphics>
+    </transition>
+    <transition id="___015">
+      <name>
+        <text>任务-015</text>
+      </name>
+      <graphics>
+        <position x="1300" y="340"/>
+      </graphics>
+    </transition>
+    <transition id="___016">
+      <name>
+        <text>任务-016</text>
+      </name>
+      <graphics>
+        <position x="1300" y="460"/>
+      </graphics>
+    </transition>
+    <transition id="___017">
+      <name>
+        <text>任务-017</text>
+      </name>
+      <graphics>
+        <position x="1300" y="580"/>
+      </graphics>
+    </transition>
+    <transition id="___018">
+      <name>
+        <text>任务-018</text>
+      </name>
+      <graphics>
+        <position x="1300" y="700"/>
+      </graphics>
+    </transition>
+    <transition id="trans____T1____S1">
+      <name>
+        <text>运输_仓库-T1_仓库-S1</text>
+      </name>
+      <graphics>
+        <position x="250" y="100"/>
+      </graphics>
+    </transition>
+    <arc id="arc____T1_trans____T1____S1" source="___T1" target="trans____T1____S1">
+      <graphics>
+        <position x="100" y="100"/>
+        <position x="250" y="100"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____T1____S1____S1" source="trans____T1____S1" target="___S1">
+      <graphics>
+        <position x="250" y="100"/>
+        <position x="400" y="100"/>
+      </graphics>
+      <inscription>
+        <text>3.4</text>
+      </inscription>
+    </arc>
+    <transition id="trans____T2____S2">
+      <name>
+        <text>运输_仓库-T2_仓库-S2</text>
+      </name>
+      <graphics>
+        <position x="250" y="220"/>
+      </graphics>
+    </transition>
+    <arc id="arc____T2_trans____T2____S2" source="___T2" target="trans____T2____S2">
+      <graphics>
+        <position x="100" y="220"/>
+        <position x="250" y="220"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____T2____S2____S2" source="trans____T2____S2" target="___S2">
+      <graphics>
+        <position x="250" y="220"/>
+        <position x="400" y="220"/>
+      </graphics>
+      <inscription>
+        <text>3.9</text>
+      </inscription>
+    </arc>
+    <transition id="trans____T3____S1">
+      <name>
+        <text>运输_仓库-T3_仓库-S1</text>
+      </name>
+      <graphics>
+        <position x="250" y="340"/>
+      </graphics>
+    </transition>
+    <arc id="arc____T3_trans____T3____S1" source="___T3" target="trans____T3____S1">
+      <graphics>
+        <position x="100" y="340"/>
+        <position x="250" y="340"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____T3____S1____S1" source="trans____T3____S1" target="___S1">
+      <graphics>
+        <position x="250" y="340"/>
+        <position x="400" y="100"/>
+      </graphics>
+      <inscription>
+        <text>4.2</text>
+      </inscription>
+    </arc>
+    <transition id="trans____S1____P1">
+      <name>
+        <text>运输_仓库-S1_仓库-P1</text>
+      </name>
+      <graphics>
+        <position x="550" y="100"/>
+      </graphics>
+    </transition>
+    <arc id="arc____S1_trans____S1____P1" source="___S1" target="trans____S1____P1">
+      <graphics>
+        <position x="400" y="100"/>
+        <position x="550" y="100"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____S1____P1____P1" source="trans____S1____P1" target="___P1">
+      <graphics>
+        <position x="550" y="100"/>
+        <position x="700" y="100"/>
+      </graphics>
+      <inscription>
+        <text>2.6</text>
+      </inscription>
+    </arc>
+    <transition id="trans____S2____P2">
+      <name>
+        <text>运输_仓库-S2_仓库-P2</text>
+      </name>
+      <graphics>
+        <position x="550" y="220"/>
+      </graphics>
+    </transition>
+    <arc id="arc____S2_trans____S2____P2" source="___S2" target="trans____S2____P2">
+      <graphics>
+        <position x="400" y="220"/>
+        <position x="550" y="220"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____S2____P2____P2" source="trans____S2____P2" target="___P2">
+      <graphics>
+        <position x="550" y="220"/>
+        <position x="700" y="220"/>
+      </graphics>
+      <inscription>
+        <text>3.1</text>
+      </inscription>
+    </arc>
+    <transition id="trans____S2____P3">
+      <name>
+        <text>运输_仓库-S2_仓库-P3</text>
+      </name>
+      <graphics>
+        <position x="550" y="220"/>
+      </graphics>
+    </transition>
+    <arc id="arc____S2_trans____S2____P3" source="___S2" target="trans____S2____P3">
+      <graphics>
+        <position x="400" y="220"/>
+        <position x="550" y="220"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____S2____P3____P3" source="trans____S2____P3" target="___P3">
+      <graphics>
+        <position x="550" y="220"/>
+        <position x="700" y="340"/>
+      </graphics>
+      <inscription>
+        <text>3.7</text>
+      </inscription>
+    </arc>
+    <transition id="trans____S1____P4">
+      <name>
+        <text>运输_仓库-S1_仓库-P4</text>
+      </name>
+      <graphics>
+        <position x="550" y="100"/>
+      </graphics>
+    </transition>
+    <arc id="arc____S1_trans____S1____P4" source="___S1" target="trans____S1____P4">
+      <graphics>
+        <position x="400" y="100"/>
+        <position x="550" y="100"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____S1____P4____P4" source="trans____S1____P4" target="___P4">
+      <graphics>
+        <position x="550" y="100"/>
+        <position x="700" y="460"/>
+      </graphics>
+      <inscription>
+        <text>2.9</text>
+      </inscription>
+    </arc>
+    <transition id="trans____P1____U1">
+      <name>
+        <text>运输_仓库-P1_仓库-U1</text>
+      </name>
+      <graphics>
+        <position x="850" y="100"/>
+      </graphics>
+    </transition>
+    <arc id="arc____P1_trans____P1____U1" source="___P1" target="trans____P1____U1">
+      <graphics>
+        <position x="700" y="100"/>
+        <position x="850" y="100"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____P1____U1____U1" source="trans____P1____U1" target="___U1">
+      <graphics>
+        <position x="850" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>5.2</text>
+      </inscription>
+    </arc>
+    <transition id="trans____P2____U2">
+      <name>
+        <text>运输_仓库-P2_仓库-U2</text>
+      </name>
+      <graphics>
+        <position x="850" y="220"/>
+      </graphics>
+    </transition>
+    <arc id="arc____P2_trans____P2____U2" source="___P2" target="trans____P2____U2">
+      <graphics>
+        <position x="700" y="220"/>
+        <position x="850" y="220"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____P2____U2____U2" source="trans____P2____U2" target="___U2">
+      <graphics>
+        <position x="850" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>6.3</text>
+      </inscription>
+    </arc>
+    <transition id="trans____P3____U3">
+      <name>
+        <text>运输_仓库-P3_仓库-U3</text>
+      </name>
+      <graphics>
+        <position x="850" y="340"/>
+      </graphics>
+    </transition>
+    <arc id="arc____P3_trans____P3____U3" source="___P3" target="trans____P3____U3">
+      <graphics>
+        <position x="700" y="340"/>
+        <position x="850" y="340"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____P3____U3____U3" source="trans____P3____U3" target="___U3">
+      <graphics>
+        <position x="850" y="340"/>
+        <position x="1000" y="340"/>
+      </graphics>
+      <inscription>
+        <text>4.8</text>
+      </inscription>
+    </arc>
+    <transition id="trans____P4____U4">
+      <name>
+        <text>运输_仓库-P4_仓库-U4</text>
+      </name>
+      <graphics>
+        <position x="850" y="460"/>
+      </graphics>
+    </transition>
+    <arc id="arc____P4_trans____P4____U4" source="___P4" target="trans____P4____U4">
+      <graphics>
+        <position x="700" y="460"/>
+        <position x="850" y="460"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____P4____U4____U4" source="trans____P4____U4" target="___U4">
+      <graphics>
+        <position x="850" y="460"/>
+        <position x="1000" y="460"/>
+      </graphics>
+      <inscription>
+        <text>5.1</text>
+      </inscription>
+    </arc>
+    <transition id="trans____P1____U5">
+      <name>
+        <text>运输_仓库-P1_仓库-U5</text>
+      </name>
+      <graphics>
+        <position x="850" y="100"/>
+      </graphics>
+    </transition>
+    <arc id="arc____P1_trans____P1____U5" source="___P1" target="trans____P1____U5">
+      <graphics>
+        <position x="700" y="100"/>
+        <position x="850" y="100"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____P1____U5____U5" source="trans____P1____U5" target="___U5">
+      <graphics>
+        <position x="850" y="100"/>
+        <position x="1000" y="580"/>
+      </graphics>
+      <inscription>
+        <text>4.4</text>
+      </inscription>
+    </arc>
+    <transition id="trans____P3____U6">
+      <name>
+        <text>运输_仓库-P3_仓库-U6</text>
+      </name>
+      <graphics>
+        <position x="850" y="340"/>
+      </graphics>
+    </transition>
+    <arc id="arc____P3_trans____P3____U6" source="___P3" target="trans____P3____U6">
+      <graphics>
+        <position x="700" y="340"/>
+        <position x="850" y="340"/>
+      </graphics>
+    </arc>
+    <arc id="arc_trans____P3____U6____U6" source="trans____P3____U6" target="___U6">
+      <graphics>
+        <position x="850" y="340"/>
+        <position x="1000" y="700"/>
+      </graphics>
+      <inscription>
+        <text>6.0</text>
+      </inscription>
+    </arc>
+    <arc id="arc____001____U1" source="___001" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____002____U1" source="___002" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____003____U1" source="___003" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____004____U1" source="___004" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____005____U1" source="___005" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____006____U1" source="___006" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____007____U2" source="___007" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____008____U2" source="___008" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____009____U2" source="___009" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____010____U2" source="___010" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____011____U2" source="___011" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____012____U2" source="___012" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____013____U1" source="___013" target="___U1">
+      <graphics>
+        <position x="1300" y="100"/>
+        <position x="1000" y="100"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____014____U2" source="___014" target="___U2">
+      <graphics>
+        <position x="1300" y="220"/>
+        <position x="1000" y="220"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____015____U3" source="___015" target="___U3">
+      <graphics>
+        <position x="1300" y="340"/>
+        <position x="1000" y="340"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____016____U4" source="___016" target="___U4">
+      <graphics>
+        <position x="1300" y="460"/>
+        <position x="1000" y="460"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____017____U5" source="___017" target="___U5">
+      <graphics>
+        <position x="1300" y="580"/>
+        <position x="1000" y="580"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+    <arc id="arc____018____U6" source="___018" target="___U6">
+      <graphics>
+        <position x="1300" y="700"/>
+        <position x="1000" y="700"/>
+      </graphics>
+      <inscription>
+        <text>24</text>
+      </inscription>
+    </arc>
+  </net>
+</pnml>
